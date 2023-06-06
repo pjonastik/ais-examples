@@ -2,10 +2,13 @@ package org.example;
 
 
 public class App {
+
     public static void main(String[] args) {
         exercise00_objectComposition();
 
         example01_MethodInvocationByValue();
+        example02_MethodInvocationByReference();
+        example03_UtilClassesCanNotCreateInstance();
     }
 
     public static void exercise00_objectComposition() {
@@ -34,4 +37,26 @@ public class App {
         System.out.println(car);
         System.out.println("local variable 'kilometers': " + kilometers);
     }
+
+    private static void example02_MethodInvocationByReference() {
+        Car dieselCar = new Car("Octavia", "Škoda", 2023,
+                new CarEngine(CarEngine.EngineType.DIESEL, 1.9F,  4));
+        System.out.println(dieselCar);
+
+        HighwayUtil.driveFiveKilometers(dieselCar);
+        HighwayUtil.driveFiveKilometers(dieselCar);
+        HighwayUtil.driveTenKilometers(dieselCar);
+
+        System.out.println(dieselCar);
+    }
+
+    private static void example03_UtilClassesCanNotCreateInstance() {
+//        new HighwayUtil();
+//        Java Example: https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html
+        System.out.println(Math.abs(-2));
+        System.out.println(Math.max(-2, 1));
+        System.out.println(Math.min(-2, 1));
+        System.out.println(Math.random());
+    }
+
 }
