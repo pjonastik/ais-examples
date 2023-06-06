@@ -14,6 +14,10 @@ public class CarEngine {
         this.cylinderCount = cylinderCount;
     }
 
+    public static CarEngine newDieselCar(float volume, int cylinderCount) {
+        return new CarEngine(EngineType.DIESEL, volume, cylinderCount);
+    }
+
     enum EngineType {
         DIESEL, GASOLINE
     }

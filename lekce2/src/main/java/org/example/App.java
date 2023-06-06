@@ -9,6 +9,7 @@ public class App {
         example01_MethodInvocationByValue();
         example02_MethodInvocationByReference();
         example03_UtilClassesCanNotCreateInstance();
+        example04_getInstanceStaticMethod();
     }
 
     public static void exercise00_objectComposition() {
@@ -57,6 +58,16 @@ public class App {
         System.out.println(Math.max(-2, 1));
         System.out.println(Math.min(-2, 1));
         System.out.println(Math.random());
+    }
+
+    private static void example04_getInstanceStaticMethod() {
+        Car dieselCar = new Car("Octavia", "Škoda", 2023,
+                new CarEngine(CarEngine.EngineType.DIESEL, 1.9F,  4));
+        System.out.println(dieselCar);
+
+        Car dieselCar2 = new Car("Octavia", "Škoda", 2023,
+                CarEngine.newDieselCar(1.9F, 4));
+        System.out.println(dieselCar2);
     }
 
 }
