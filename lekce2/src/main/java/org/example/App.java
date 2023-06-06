@@ -5,6 +5,7 @@ public class App {
 
     public static void main(String[] args) {
         exercise00_objectComposition();
+        exercise01_newGasolineCar();
 
         example01_MethodInvocationByValue();
         example02_MethodInvocationByReference();
@@ -23,6 +24,20 @@ public class App {
         gasCar.setColor("gray");
 
         System.out.println(gasCar);
+    }
+
+
+    private static void exercise01_newGasolineCar() {
+        Car dieselCar = new Car("Octavia", "Škoda", 2023,
+                new CarEngine(CarEngine.EngineType.GASOLINE, 1.9F,  4));
+        System.out.println(dieselCar);
+
+        Car dieselCar2 = new Car("Octavia", "Škoda", 2023,
+                CarEngine.newCasolineCar(1.9F, 4));
+        System.out.println(dieselCar2);
+
+        //https://www.selenium.dev/documentation/webdriver/getting_started/first_script/
+        //https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/By.ById.html
     }
 
     private static void example01_MethodInvocationByValue() {

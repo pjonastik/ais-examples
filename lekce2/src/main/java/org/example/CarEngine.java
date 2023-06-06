@@ -18,6 +18,10 @@ public class CarEngine {
         return new CarEngine(EngineType.DIESEL, volume, cylinderCount);
     }
 
+    public static CarEngine newCasolineCar(float volume, int cylinderCount) {
+        return new CarEngine(EngineType.GASOLINE, volume, cylinderCount);
+    }
+
     enum EngineType {
         DIESEL, GASOLINE
     }
