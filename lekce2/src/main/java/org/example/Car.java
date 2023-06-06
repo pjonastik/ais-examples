@@ -9,7 +9,7 @@ public class Car {
     private int year;
     private String color;
     private CarEngine carEngine;
-    private float mileage;
+    private double mileage;
 
 
     public Car(String model, String brand, int year, CarEngine carEngine) {
@@ -48,12 +48,31 @@ public class Car {
         return color;
     }
 
+    public void drive(byte kilometers) {
+        mileage += kilometers;
+//        kilometers = 2; //this declaration does not have any effect on variable out of scope
+    }
+
+    public void drive(short kilometers) {
+        mileage += kilometers;
+//        kilometers = 2; //this declaration does not have any effect on variable out of scope
+    }
+
+    public void drive(int kilometers) {
+        mileage += kilometers;
+//        kilometers = 2; //this declaration does not have any effect on variable out of scope
+    }
+
     public void drive(float kilometers) {
         mileage += kilometers;
 //        kilometers = 2; //this declaration does not have any effect on variable out of scope
     }
 
-    public float getMileage() {
+    public void drive(double kilometers) {
+        mileage += kilometers;
+    }
+
+    public double getMileage() {
         return mileage;
     }
 

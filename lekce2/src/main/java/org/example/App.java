@@ -6,6 +6,7 @@ public class App {
     public static void main(String[] args) {
         exercise00_objectComposition();
         exercise01_newGasolineCar();
+        exercise02_overridingMethod();
 
         example01_MethodInvocationByValue();
         example02_MethodInvocationByReference();
@@ -38,6 +39,23 @@ public class App {
 
         //https://www.selenium.dev/documentation/webdriver/getting_started/first_script/
         //https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/By.ById.html
+    }
+
+    private static void exercise02_overridingMethod() {
+        Car dieselCar = new Car("Octavia", "Škoda", 2023,
+                new CarEngine(CarEngine.EngineType.DIESEL, 1.9F,  4));
+        System.out.println(dieselCar);
+
+        dieselCar.drive((byte)1);
+        dieselCar.drive((short)1);
+        dieselCar.drive(1);
+        dieselCar.drive(1L);
+        dieselCar.drive(1F);
+        dieselCar.drive(1D);
+
+        System.out.println(dieselCar);
+        //primitive data types: https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
+        //Java overloading in action: https://docs.oracle.com/javase/8/docs/api/java/util/List.html
     }
 
     private static void example01_MethodInvocationByValue() {
