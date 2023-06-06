@@ -3,11 +3,12 @@ package org.example;
 
 public class App {
     public static void main(String[] args) {
-        exercise01_objectComposition();
-        exercise02_MethodInvocationByValue();
+        exercise00_objectComposition();
+
+        example01_MethodInvocationByValue();
     }
 
-    public static void exercise01_objectComposition() {
+    public static void exercise00_objectComposition() {
         Car dieselCar = new Car("Octavia", "Škoda", 2023,
                 new CarEngine(CarEngine.EngineType.DIESEL, 1.9F,  4));
         dieselCar.setColor("black");
@@ -20,7 +21,7 @@ public class App {
         System.out.println(gasCar);
     }
 
-    private static void exercise02_MethodInvocationByValue() {
+    private static void example01_MethodInvocationByValue() {
         Car car = new Car("Octavia", "Škoda", 2023,
                 new CarEngine(CarEngine.EngineType.DIESEL, 1.9F,  4));
         car.setColor("black");
@@ -33,6 +34,4 @@ public class App {
         System.out.println(car);
         System.out.println("local variable 'kilometers': " + kilometers);
     }
-
-
 }

@@ -50,7 +50,7 @@ public class Car {
 
     public void drive(float kilometers) {
         mileage += kilometers;
-//        kilometers = 2;
+//        kilometers = 2; //this declaration does not have any effect on variable out of scope
     }
 
     public float getMileage() {
