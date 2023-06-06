@@ -4,6 +4,7 @@ package org.example;
 public class App {
     public static void main(String[] args) {
         exercise01_objectComposition();
+        exercise02_MethodInvocationByValue();
     }
 
     public static void exercise01_objectComposition() {
@@ -19,8 +20,19 @@ public class App {
         System.out.println(gasCar);
     }
 
+    private static void exercise02_MethodInvocationByValue() {
+        Car car = new Car("Octavia", "Škoda", 2023,
+                new CarEngine(CarEngine.EngineType.DIESEL, 1.9F,  4));
+        car.setColor("black");
 
+        int kilometers = 5;
+        car.drive(kilometers);
+        car.drive(kilometers);
+        car.drive(kilometers);
 
+        System.out.println(car);
+        System.out.println("local variable 'kilometers': " + kilometers);
+    }
 
 
 }

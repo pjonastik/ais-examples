@@ -9,6 +9,7 @@ public class Car {
     private int year;
     private String color;
     private CarEngine carEngine;
+    private float mileage;
 
 
     public Car(String model, String brand, int year, CarEngine carEngine) {
@@ -47,6 +48,15 @@ public class Car {
         return color;
     }
 
+    public void drive(float kilometers) {
+        mileage += kilometers;
+//        kilometers = 2;
+    }
+
+    public float getMileage() {
+        return mileage;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -54,10 +64,10 @@ public class Car {
                 ", brand='" + brand + '\'' +
                 ", year=" + year +
                 ", color='" + color + '\'' +
-                ", engine= '" + carEngine + '\'' +
+                ", carEngine=" + carEngine +
+                ", mileage=" + mileage +
                 '}';
     }
-
 
     public static int getCounter() {
         return counter;

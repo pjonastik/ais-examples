@@ -21,4 +21,15 @@ class CarTest {
         assertThat(carEngine.getVolume(), is(2.9F));
         assertThat(carEngine.getCylinderCount(), is(6));
     }
+
+
+    @Test
+    void testMileageCalculation() {
+        CarEngine dieselEngine = new CarEngine(CarEngine.EngineType.DIESEL,2.9F,  6);
+        Car car = new Car("Octavia", "Škoda", 2023, dieselEngine);
+        car.drive(2.2F);
+        car.drive(2.8F);
+
+        assertThat(car.getMileage(), is(5F));
+    }
 }
