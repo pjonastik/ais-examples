@@ -8,8 +8,8 @@ public class CarEngine {
     private final int cylinderCount;
 
 
-    public CarEngine(float volume, int cylinderCount) {
-        type = EngineType.DIESEL;
+    public CarEngine(EngineType type, float volume, int cylinderCount) {
+        this.type = type;
         this.volume = volume;
         this.cylinderCount = cylinderCount;
     }

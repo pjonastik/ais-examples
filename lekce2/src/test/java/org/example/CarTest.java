@@ -7,7 +7,7 @@ class CarTest {
 
     @Test
     void createCar() {
-        CarEngine dieselEngine = new CarEngine(2.9F,  6);
+        CarEngine dieselEngine = new CarEngine(CarEngine.EngineType.DIESEL,2.9F,  6);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine);
         car.setColor("black");
 
