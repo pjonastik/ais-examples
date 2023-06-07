@@ -4,14 +4,35 @@ package org.example;
 public class App {
 
     public static void main(String[] args) {
-        exercise00_objectComposition();
-        exercise01_newGasolineCar();
-        exercise02_overridingMethod();
+//        exercise00_objectComposition();
+//        exercise01_newGasolineCar();
+//        exercise02_overridingMethod();
+//
+//        example01_MethodInvocationByValue();
+//        example02_MethodInvocationByReference();
+//        example03_UtilClassesCanNotCreateInstance();
+//        example04_getInstanceStaticMethod();
+//        example05_inheritance();
+        example06_equalsAndHashCode();
+    }
 
-        example01_MethodInvocationByValue();
-        example02_MethodInvocationByReference();
-        example03_UtilClassesCanNotCreateInstance();
-        example04_getInstanceStaticMethod();
+    private static void example06_equalsAndHashCode() {
+        Car dieselCar = new Car("Octavia", "Škoda", 2023,
+                new CarEngine(CarEngine.EngineType.GASOLINE, 1.9F,  4));
+
+        Car dieselCar2 = new Car("Octavia", "Škoda", 2023,
+                new CarEngine(CarEngine.EngineType.GASOLINE, 1.9F,  4));
+
+        Car dieselCar3 = new Car("Octavia", "Škoda", 2023,
+                new CarEngine(CarEngine.EngineType.DIESEL, 1.9F,  4));
+
+        System.out.println(dieselCar.equals(dieselCar2));
+        System.out.println(dieselCar.equals(dieselCar3));
+    }
+
+    private static void example05_inheritance() {
+        Child car = new Child();
+        System.out.println(car);
     }
 
     public static void exercise00_objectComposition() {

@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Car {
 
     private static int counter;
@@ -74,6 +76,20 @@ public class Car {
 
     public double getMileage() {
         return mileage;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return year == car.year && Double.compare(car.mileage, mileage) == 0 && Objects.equals(model, car.model) && Objects.equals(brand, car.brand) && Objects.equals(color, car.color) && Objects.equals(carEngine, car.carEngine);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(model, brand, year, color, carEngine, mileage);
     }
 
     @Override
