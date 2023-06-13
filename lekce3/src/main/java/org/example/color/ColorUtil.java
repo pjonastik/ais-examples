@@ -2,7 +2,7 @@ package org.example.color;
 
 import java.awt.*;
 
-public class ColorUtil {
+public final class ColorUtil {
     private static final String ANSI_RESET = "\u001B[0m";
 
     public static String colorText(ShapeColor color, String text) {
