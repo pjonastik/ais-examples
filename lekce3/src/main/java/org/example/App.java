@@ -4,6 +4,9 @@ import org.example.color.ShapeColor;
 import org.example.inheritance.Circle;
 import org.example.inheritance.Rectangle;
 import org.example.inheritance.Shape;
+import org.example.interfaces.IShape;
+import org.example.interfaces.MyCircle;
+import org.example.interfaces.MyRectangle;
 
 
 import java.util.ArrayList;
@@ -14,7 +17,19 @@ public class App {
 //        floatVsDouble();
 //        equalsExample();
 //        inheritance_shapeExample();
-        polymorphismInPractise();
+//        polymorphismInPractise();
+        interfaceExample();
+    }
+
+    private static void interfaceExample() {
+        List<IShape> shapes = new ArrayList<>();
+        shapes.add(new MyRectangle(ShapeColor.GREEN));
+        shapes.add(new MyCircle(ShapeColor.BLUE));
+
+        for (IShape shape : shapes) {
+            shape.draw();
+        }
+
     }
 
     private static void polymorphismInPractise() {
