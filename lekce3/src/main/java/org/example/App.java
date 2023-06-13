@@ -32,8 +32,8 @@ public class App {
     }
 
     private static void inheritance_shapeExample() {
-        Shape shape = new Shape(ShapeColor.BLUE);
-        shape.draw();
+//        Shape shape = new Shape(ShapeColor.BLUE);
+//        shape.draw();
 
         Circle circle = new Circle(ShapeColor.RED);
         circle.draw();

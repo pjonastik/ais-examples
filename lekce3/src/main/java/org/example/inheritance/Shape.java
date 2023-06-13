@@ -3,10 +3,9 @@ package org.example.inheritance;
 import org.example.color.ColorUtil;
 import org.example.color.ShapeColor;
 
-import java.awt.*;
 import java.util.Objects;
 
-public class Shape {
+public abstract class Shape {
     protected final ShapeColor color;
 
     public Shape(ShapeColor color) {
@@ -18,10 +17,11 @@ public class Shape {
         return color;
     }
 
-    public void draw() {
-        String coloredCircle = ColorUtil.colorText(color, "Shape.draw()");
-        System.out.println(coloredCircle);
-    }
+    public abstract void draw();
+//    {
+//        String coloredCircle = ColorUtil.colorText(color, "Shape.draw()");
+//        System.out.println(coloredCircle);
+//    }
 
     @Override
     public boolean equals(Object o) {
