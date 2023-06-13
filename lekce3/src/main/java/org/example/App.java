@@ -1,11 +1,23 @@
 package org.example;
 
+import java.util.ArrayList;
+
 /**
  * Hello world!
  */
 public class App {
     public static void main(String[] args) {
-        floatVsDouble();
+//        floatVsDouble();
+        equalsExample();
+    }
+
+    private static void equalsExample() {
+        LightCar car = new LightCar("BMW");
+        LightCar car2 = new LightCar("BMW");
+
+        ArrayList<LightCar> list = new ArrayList<>();
+        list.add(car);
+        System.out.println("list.contains : " + list.contains(car2)); //comment out equals method and run to see difference
     }
 
     private static void floatVsDouble() {
