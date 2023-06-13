@@ -1,15 +1,32 @@
 package org.example;
 
+import org.example.color.ShapeColor;
+import org.example.inheritance.Circle;
+import org.example.inheritance.Rectangle;
+import org.example.inheritance.Shape;
+
+
 import java.util.ArrayList;
 
-/**
- * Hello world!
- */
 public class App {
     public static void main(String[] args) {
 //        floatVsDouble();
-        equalsExample();
+//        equalsExample();
+
+        inheritance_shapeExample();
     }
+
+    private static void inheritance_shapeExample() {
+        Shape shape = new Shape(ShapeColor.BLUE);
+        shape.draw();
+
+        Circle circle = new Circle(ShapeColor.RED);
+        circle.draw();
+
+        Shape rectangle = new Rectangle(ShapeColor.GREEN); //notice that we assign Rectangle type to Shape type!
+        rectangle.draw();
+    }
+
 
     private static void equalsExample() {
         LightCar car = new LightCar("BMW");
