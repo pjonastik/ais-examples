@@ -16,7 +16,7 @@ public final class ColorUtil {
             break;
 
             case GREEN: ansiColor += "\u001B[32m";
-            //TODO add more options
+            //TODO add more colors
         }
 
         return ansiColor + text + ANSI_RESET;

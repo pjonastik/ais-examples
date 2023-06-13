@@ -7,13 +7,28 @@ import org.example.inheritance.Shape;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
 //        floatVsDouble();
 //        equalsExample();
+//        inheritance_shapeExample();
+        polymorphismInPractise();
+    }
 
-        inheritance_shapeExample();
+    private static void polymorphismInPractise() {
+        List<Shape> shapes = new ArrayList<>();
+        shapes.add(new Circle(ShapeColor.RED));
+        shapes.add(new Rectangle(ShapeColor.BLUE));
+//        shapes.add(new Shape(ShapeColor.GREEN));
+
+        for (Shape shape : shapes) {
+            shape.draw();
+        }
+
+        List<Circle> shapes2 = new ArrayList<>();
+//        shapes2.add(new Rectangle(ShapeColor.RED)); you cannot assign Rectangle into Circle
     }
 
     private static void inheritance_shapeExample() {
