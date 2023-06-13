@@ -3,8 +3,6 @@ package org.example.inheritance;
 import org.example.color.ColorUtil;
 import org.example.color.ShapeColor;
 
-import java.awt.*;
-
 public class Circle extends Shape {
 
     public Circle(ShapeColor color) {

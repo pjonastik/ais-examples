@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.Objects;
 
 public class Shape {
-    private final ShapeColor color;
+    protected final ShapeColor color;
 
     public Shape(ShapeColor color) {
         this.color = color;

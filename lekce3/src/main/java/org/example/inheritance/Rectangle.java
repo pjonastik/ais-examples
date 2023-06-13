@@ -3,9 +3,7 @@ package org.example.inheritance;
 import org.example.color.ColorUtil;
 import org.example.color.ShapeColor;
 
-import java.awt.*;
-
-public class Rectangle extends Shape{
+public class Rectangle extends Shape {
     public Rectangle(ShapeColor color) {
         super(color);
     }
@@ -13,10 +11,10 @@ public class Rectangle extends Shape{
     @Override
     public void draw() {
         String circle =
-                ColorUtil.colorText(getColor(), "+--------------------------+\n")  +
-                ColorUtil.colorText(getColor(), "+                          +\n")  +
-                ColorUtil.colorText(getColor(), "+                          +\n")  +
-                ColorUtil.colorText(getColor(), "+--------------------------+\n");
+                ColorUtil.colorText(color, "+--------------------------+\n")  +
+                ColorUtil.colorText(color, "+                          +\n")  +
+                ColorUtil.colorText(color, "+                          +\n")  +
+                ColorUtil.colorText(color, "+--------------------------+\n");
         System.out.println(circle);
     }
 }
