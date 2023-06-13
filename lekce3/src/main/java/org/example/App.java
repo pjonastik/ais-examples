@@ -25,6 +25,7 @@ public class App {
         List<IShape> shapes = new ArrayList<>();
         shapes.add(new MyRectangle(ShapeColor.GREEN));
         shapes.add(new MyCircle(ShapeColor.BLUE));
+        shapes.add(new Circle(ShapeColor.RED));
 
         for (IShape shape : shapes) {
             shape.draw();

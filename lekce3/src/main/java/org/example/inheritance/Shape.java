@@ -1,11 +1,11 @@
 package org.example.inheritance;
 
-import org.example.color.ColorUtil;
 import org.example.color.ShapeColor;
+import org.example.interfaces.IShape;
 
 import java.util.Objects;
 
-public abstract class Shape {
+public abstract class Shape implements IShape {
     protected final ShapeColor color;
 
     public Shape(ShapeColor color) {
