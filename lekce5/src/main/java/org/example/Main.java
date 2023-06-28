@@ -4,11 +4,23 @@ package org.example;
 import org.example.calculator.Calculator;
 import org.example.calculator.Divider;
 import org.example.tasks.NumberReader;
+import org.example.tasks.exception.HandleException;
+import org.example.tasks.handler.Handler;
+import org.example.tasks.handler.InnerHandler;
+import org.example.tasks.handler.MidHandler;
+import org.example.tasks.handler.OuterHandler;
+import org.example.tasks.light.BuggyEvaluator;
+import org.example.tasks.light.LightBulb;
+import org.example.worker.AisWorker;
+import org.example.worker.Worker;
+import org.example.worker.WorkerException;
 
 import java.util.Random;
+import java.util.logging.Logger;
 
 
 public class Main {
+    private static final Logger LOGGER = Logger.getLogger("Main");
     public static void main(String[] args) {
 //        exampleO1_divisionByZero_RuntimeException();
 //        example02_CatchExceptionAndLogIt();
@@ -17,11 +29,111 @@ public class Main {
 //        example05_catchingInDivider();
 //        example06_propagatingException();
 
+
+//        example08_checkedExceptions();
+//        example09_checkedExceptionsAndInterfaces();
+//        example10_eatException();
+
+
+
         task01_FixNumberReader();
+//        task02_exceptionChanning();
+//        task03_modifyTask02();
+//        task04_refactorToUseFinally();
     }
+
+    private static void task04_refactorToUseFinally() {
+        LightBulb light = new LightBulb();
+        BuggyEvaluator evaluator = new BuggyEvaluator();
+        try {
+            light.on();
+            evaluator.buggyMethod();//code that can throw exception
+            light.off();
+        } catch (RuntimeException e) {
+            light.off();
+        }
+    }
+
+
+
+    private static void example10_eatException() {
+        try{
+            int a [] = new int[2];
+            a[2] = -1;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            //Program eats information about error and continue
+
+            //NOTE: Do not do this throw it or log it like following:
+//            LOGGER.log(Level.INFO, "importatn message to log");
+        }
+    }
+
 
     private static void task01_FixNumberReader() {
         NumberReader.readInt("Write integer: ");
+    }
+
+    private static void task02_exceptionChanning() {
+        Handler handler = new OuterHandler(
+                                new MidHandler(
+                                        new InnerHandler()
+                                ));
+
+        try {
+            handler.handle();
+        } catch (HandleException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Composition:
+     *   Modify solved task2 so exceptions MidHandler delegates handle call to OutHandler and OuterHandler delegates call to InnerHandler
+     */
+    private static void task03_modifyTask02() {
+        Handler handler = new OuterHandler(
+                new MidHandler(
+                        new InnerHandler()
+                ));
+
+        try {
+            handler.handle();
+        } catch (HandleException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+    /**
+     *  Comment out error handler -> to show that compiler screams
+     */
+    private static void example09_checkedExceptionsAndInterfaces() {
+        //This part of code is usually in Main (object creation and initialization of program)
+        Worker worker = new AisWorker();
+//        Worker worker = new EngetoWorker();
+
+        //###################################################################
+        //this part is usually somewhere in some class which is part of program
+        try {
+            worker.work();
+        } catch (WorkerException e) { //I have to catch it even it DOES NOT throw anything!
+            throw new RuntimeException("Worker failed!", e); //exception channing!
+        }
+    }
+
+    /**
+     * Notice that I HAVE TO catch checked exception!
+     */
+    private static void example08_checkedExceptions() {
+        AisWorker worker = new AisWorker();
+
+        try {
+            worker.work();
+        } catch (WorkerException e) { //I have to catch it
+            throw new RuntimeException("Worker failed!", e); //exception channing!
+        }
     }
 
     private static void example06_propagatingException() {
