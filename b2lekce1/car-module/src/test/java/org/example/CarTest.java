@@ -24,7 +24,6 @@ class CarTest {
         assertThat(carEngine.getCylinderCount(), is(6));
     }
 
-
     @Test
     void testMileageCalculation() {
         CarEngine dieselEngine = new CarEngine(CarEngine.EngineType.DIESEL,2.9F,  6);
@@ -32,6 +31,6 @@ class CarTest {
         car.drive(2.2F);
         car.drive(2.8F);
 
-        assertThat(car.getMileage(), is(5F));
+        assertThat(car.getMileage(), is(5d));
     }
 }
