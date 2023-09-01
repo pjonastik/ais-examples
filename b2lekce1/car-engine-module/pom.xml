@@ -7,7 +7,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>childmodule</artifactId>
+    <artifactId>car-engine-module</artifactId>
     <packaging>jar</packaging>
 
     <name>childmodule</name>
