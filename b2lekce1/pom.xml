@@ -12,6 +12,7 @@
 
     <modules>
         <module>car-engine-module</module>
+        <module>car-module</module>
     </modules>
 
     <properties>
