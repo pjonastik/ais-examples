@@ -11,10 +11,13 @@ public class OuterHandler implements Handler {
         this.handler = handler;
     }
 
+    @Override
     public void handle() throws HandleException {
-        //TODO comment out the code and add try catch block and then chain exception
-        // with MidHandlerException in catch block
-//        handler.handle();
-        throw new OuterHandlerException("OUTER: Handler cannot be finished!"); //this should be in catch block
+        try {
+            handler.handle();
+        } catch (HandleException e) {
+            throw new OuterHandlerException("OUTER: Handler cannot be finished!", e);
+        }
+
     }
 }

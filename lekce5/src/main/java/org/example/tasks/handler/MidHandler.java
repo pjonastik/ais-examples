@@ -1,5 +1,6 @@
 package org.example.tasks.handler;
 
+import org.example.tasks.exception.HandleException;
 import org.example.tasks.exception.MidHandlerException;
 
 public class MidHandler implements Handler {
@@ -11,12 +12,12 @@ public class MidHandler implements Handler {
     }
 
     @Override
-    public void handle() throws MidHandlerException {
-
-        //TODO add try catch block and chain exception with MidHandlerException
-//        handler.handle();
-
-        throw new MidHandlerException("Inner handler failed: "); //this should be in catch block
+    public void handle() throws HandleException {
+        try {
+            handler.handle();
+        } catch (HandleException e) {
+            throw new MidHandlerException("Inner handler failed: ", e); //this should be in catch block
+        }
 
     }
 }

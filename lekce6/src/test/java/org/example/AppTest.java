@@ -14,15 +14,15 @@ public class AppTest {
     /**
      * Happy Test :-)
      */
-//    @Test
-//    public void testApp() {
-//        assertTrue( true );
-//    }
-//
-//    @Disabled
-//    @Test
-//    public void skippedTest() {
-//        //please no not run this It needs to be fixed
-//        assertTrue( false );
-//    }
+    @Test
+    public void testApp() {
+        assertTrue( true );
+    }
+
+    @Disabled
+    @Test
+    public void skippedTest() {
+        //please no not run this It needs to be fixed
+        assertTrue( false );
+    }
 }

@@ -12,10 +12,12 @@ import org.example.tasks.handler.OuterHandler;
 import org.example.tasks.light.BuggyEvaluator;
 import org.example.tasks.light.LightBulb;
 import org.example.worker.AisWorker;
+import org.example.worker.EngetoWorker;
 import org.example.worker.Worker;
 import org.example.worker.WorkerException;
 
 import java.util.Random;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -36,10 +38,10 @@ public class Main {
 
 
 
-        task01_FixNumberReader();
+//        task01_FixNumberReader();
 //        task02_exceptionChanning();
 //        task03_modifyTask02();
-//        task04_refactorToUseFinally();
+        task04_refactorToUseFinally();
     }
 
     private static void task04_refactorToUseFinally() {
@@ -48,8 +50,9 @@ public class Main {
         try {
             light.on();
             evaluator.buggyMethod();//code that can throw exception
-            light.off();
         } catch (RuntimeException e) {
+            LOGGER.log(Level.SEVERE, "There was an issue", e);
+        } finally {
             light.off();
         }
     }
@@ -64,7 +67,7 @@ public class Main {
             //Program eats information about error and continue
 
             //NOTE: Do not do this throw it or log it like following:
-//            LOGGER.log(Level.INFO, "importatn message to log");
+            LOGGER.log(Level.INFO, "important message to log");
         }
     }
 
@@ -111,8 +114,8 @@ public class Main {
      */
     private static void example09_checkedExceptionsAndInterfaces() {
         //This part of code is usually in Main (object creation and initialization of program)
-        Worker worker = new AisWorker();
-//        Worker worker = new EngetoWorker();
+//        Worker worker = new AisWorker();
+        Worker worker = new EngetoWorker();
 
         //###################################################################
         //this part is usually somewhere in some class which is part of program

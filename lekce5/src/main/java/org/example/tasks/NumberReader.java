@@ -9,12 +9,14 @@ public class NumberReader {
         boolean inputIsNumber = false;
 
         while (!inputIsNumber) {
-            System.out.print(message);
-            String vstupStr = reader.nextLine();
-            input = Integer.parseInt(vstupStr);  // try conversion
-            inputIsNumber = true;
-
-            System.out.println("Input is not number! Please type it again.");
+            try {
+                System.out.print(message);
+                String vstupStr = reader.nextLine();
+                input = Integer.parseInt(vstupStr);  // try conversion
+                inputIsNumber = true;
+            } catch (NumberFormatException ex) {
+                System.out.println("Input is not number! Please type it again.");
+            }
         }
         return input;
     }

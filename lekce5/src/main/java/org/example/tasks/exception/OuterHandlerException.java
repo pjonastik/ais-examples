@@ -6,5 +6,9 @@ public class OuterHandlerException extends HandleException {
         super(message);
     }
 
+    public OuterHandlerException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
     //TODO add proper constructor so exceptions can be chained
 }
