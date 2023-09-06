@@ -20,6 +20,11 @@
         </dependency>
 
         <!-- test dependencies -->
+        <!-- TODO task 3 add proper dependency, so test works -->
+        <!-- Hint: use this https://stackoverflow.com/questions/14722873/sharing-src-test-classes-between-modules-in-a-multi-module-maven-project
+        to find answer for proper dependency
+        -->
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -30,5 +35,7 @@
             <artifactId>hamcrest-all</artifactId>
         </dependency>
     </dependencies>
+
+
 
 </project>

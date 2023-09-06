@@ -2,8 +2,10 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
+import static org.example.CarEngineMatcher.carEngineMatcher;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 public class CarEngineTest {
 
@@ -11,9 +13,7 @@ public class CarEngineTest {
     public void createDieselCarEngine() {
         CarEngine carEngine = CarEngine.newDieselCar(3f, 6);
 
-        assertThat(carEngine.getType(), equalTo(CarEngine.EngineType.DIESEL));
-        assertThat(carEngine.getVolume(), equalTo(3F));
-        assertThat(carEngine.getCylinderCount(), equalTo(6));
+        assertThat(carEngine, is(carEngineMatcher(CarEngine.EngineType.DIESEL, 3F, 6)));
     }
 
     @Test

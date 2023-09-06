@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.example.CarEngineMatcher.carEngineMatcher;
 
 class CarTest {
 
@@ -13,6 +14,7 @@ class CarTest {
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine);
         car.setColor("black");
 
+        assertThat(dieselEngine, is(carEngineMatcher(CarEngine.EngineType.DIESEL, 2.9F, 6)));
         assertThat(car.getBrand(), is("Škoda"));
         assertThat(car.getModel(), is("Octavia"));
         assertThat(car.getYear(), is(2023));
