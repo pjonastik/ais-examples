@@ -52,22 +52,18 @@ public class Car {
 
     public void drive(byte kilometers) {
         mileage += kilometers;
-//        kilometers = 2; //this declaration does not have any effect on variable out of scope
     }
 
     public void drive(short kilometers) {
         mileage += kilometers;
-//        kilometers = 2; //this declaration does not have any effect on variable out of scope
     }
 
     public void drive(int kilometers) {
         mileage += kilometers;
-//        kilometers = 2; //this declaration does not have any effect on variable out of scope
     }
 
     public void drive(float kilometers) {
         mileage += kilometers;
-//        kilometers = 2; //this declaration does not have any effect on variable out of scope
     }
 
     public void drive(double kilometers) {
