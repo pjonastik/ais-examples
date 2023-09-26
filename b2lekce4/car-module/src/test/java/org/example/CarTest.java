@@ -47,7 +47,7 @@ class CarTest {
         CarEngine dieselEngine = new CarEngine(EngineType.DIESEL, 2.9F, 6);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.5f);
 
-        car.tank(EngineType.DIESEL, 20f); //TODO refactor engine type to be more generic
+        car.tank(EngineType.DIESEL, 20f);
 
         assertThat(car.getActualTankCapacity(), is(20f));
     }
