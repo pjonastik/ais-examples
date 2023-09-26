@@ -4,26 +4,23 @@ import java.util.Objects;
 
 public class Car {
 
-    private static int counter;
-
-    private String model;
-    private String brand;
-    private int year;
-    private String color;
-    private CarEngine carEngine;
+    private final String model;
+    private final String brand;
+    private final int year;
+    private final CarEngine carEngine;
+    private final int tankSize;
+    private final float consumptionSize;
     private double mileage;
+    private String color;
+    private float actualTankCapacity;
 
-
-    public Car(String model, String brand, int year, CarEngine carEngine) {
+    public Car(String model, String brand, int year, CarEngine carEngine, int tankSize, float consumptionSize) {
         this.model = model;
         this.brand = brand;
         this.year = year;
         this.carEngine = carEngine;
-        counter++;
-    }
-
-    public Car(String brand, int year, CarEngine engine) {
-        this(null, brand, year, engine);
+        this.tankSize = tankSize;
+        this.consumptionSize = consumptionSize;
     }
 
     public void setColor(String color) {
@@ -100,7 +97,19 @@ public class Car {
                 '}';
     }
 
-    public static int getCounter() {
-        return counter;
+    public int getTankSize() {
+        return tankSize;
+    }
+
+    public float getConsumptionSize() {
+        return consumptionSize;
+    }
+
+    public float getActualTankCapacity() {
+        return actualTankCapacity;
+    }
+
+    public void tank(EngineType engineType, float liters) {
+        actualTankCapacity += liters;
     }
 }

@@ -22,10 +22,6 @@ public class CarEngine {
         return new CarEngine(EngineType.GASOLINE, volume, cylinderCount);
     }
 
-    enum EngineType {
-        DIESEL, GASOLINE
-    }
-
     public EngineType getType() {
         return type;
     }

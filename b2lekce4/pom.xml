@@ -13,6 +13,7 @@
     <modules>
         <module>car-engine-module</module>
         <module>car-module</module>
+        <module>car-shared-module</module>
     </modules>
 
     <properties>
