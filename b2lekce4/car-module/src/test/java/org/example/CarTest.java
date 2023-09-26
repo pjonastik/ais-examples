@@ -50,20 +50,14 @@ class CarTest {
         car.tank(EngineType.DIESEL, 20f); //TODO refactor engine type to be more generic
 
         assertThat(car.getActualTankCapacity(), is(20f));
-        // TODO I cannot fill more than totalCapacity
-        // TODO drive method should should decrese actualTankCapaacity acording to consumptionSize
     }
 
-    //TODO list for me:
-    // * add method fill the tank
+    // TODO I cannot fill more than totalCapacity
+    // TODO drive method should should decrese actualTankCapaacity acording to consumptionSize
+    // TODO drive should throw exception if drive method is invoked but we don't have enough gas in tank
 
-
-    // * drive method should decrease gas in tank
-    // *    drive throw exception if drive method is invoked but we don't have enough gas in tank
-
-    //TODO for students:
-
-    //implement method should percentageOfTank
+    //TODO implement method percentageOfTank (e.g. if my getActualTankCapacity is 20 and tankSize is 40 then is should
+    //     return 50%
 
     //TODO task:
     // implement warning feature for user that after x-kilometers new method called 'Car.shouldGoToService()'
