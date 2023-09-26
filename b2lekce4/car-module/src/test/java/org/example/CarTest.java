@@ -60,7 +60,6 @@ class CarTest {
     //     return 50%
 
     //TODO task:
-    // implement warning feature for user that after x-kilometers new method called 'Car.shouldGoToService()'
-    // and 'service()' which reset the kilometer counter
-
+    // implement warning feature for user that after x-kilometers (Car.drive method), new method called 'Car.shouldGoToService()' should return true, otherwise false
+    // and 'service()' method which resets (new) service counter
 }
