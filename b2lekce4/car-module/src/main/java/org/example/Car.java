@@ -58,6 +58,14 @@ public class Car {
     }
 
     public void drive(int kilometers) {
+        float availableKilometers = (actualTankCapacity/consumptionSize)*100;
+        if (availableKilometers < kilometers) {
+            throw new NotEnoughFuelException(
+                    String.format("Not enough fuel [%s/%s] liters in tank to drive '%s' kilometers. Missing '%.2f' liters.",
+                            actualTankCapacity, tankSize, kilometers,
+                            (kilometers-availableKilometers) * consumptionSize / 100));
+        }
+
         mileage += kilometers;
         actualTankCapacity = actualTankCapacity - (kilometers * consumptionSize/100);
     }
