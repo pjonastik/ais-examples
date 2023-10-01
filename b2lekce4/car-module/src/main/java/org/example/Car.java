@@ -8,18 +8,18 @@ public class Car {
     private final String brand;
     private final int year;
     private final CarEngine carEngine;
-    private final int tankSize;
+    private final int tankCapacity;
     private final float consumptionSize;    //per 100 km
     private float mileage;
     private String color;
     private float actualTankCapacity;
 
-    public Car(String model, String brand, int year, CarEngine carEngine, int tankSize, float consumptionSize) {
+    public Car(String model, String brand, int year, CarEngine carEngine, int tankCapacity, float consumptionSize) {
         this.model = model;
         this.brand = brand;
         this.year = year;
         this.carEngine = carEngine;
-        this.tankSize = tankSize;
+        this.tankCapacity = tankCapacity;
         this.consumptionSize = consumptionSize;
     }
 
@@ -64,7 +64,7 @@ public class Car {
         if (availableKilometers < kilometers) {
             throw new NotEnoughFuelException(
                     String.format("Not enough fuel [%s/%s] liters in tank to drive '%s' kilometers. Missing '%.2f' liters.",
-                            actualTankCapacity, tankSize, kilometers,
+                            actualTankCapacity, tankCapacity, kilometers,
                             (kilometers-availableKilometers) * consumptionSize / 100));
         }
         mileage += kilometers;
@@ -101,8 +101,8 @@ public class Car {
                 '}';
     }
 
-    public int getTankSize() {
-        return tankSize;
+    public int getTankCapacity() {
+        return tankCapacity;
     }
 
     public float getConsumptionSize() {
@@ -114,10 +114,10 @@ public class Car {
     }
 
     public void refuel(FuelType fuelType, float liters) {
-        if ((actualTankCapacity + liters) > tankSize) {
+        if ((actualTankCapacity + liters) > tankCapacity) {
             throw new TankOverflowException(
                     String.format("Tank capacity overflow ('%s' liters)! The tank capacity is '%d' liters.",
-                            (Math.abs(tankSize - (actualTankCapacity + liters))) , tankSize));
+                            (Math.abs(tankCapacity - (actualTankCapacity + liters))) , tankCapacity));
         }
         actualTankCapacity += liters;
     }

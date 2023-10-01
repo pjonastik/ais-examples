@@ -24,7 +24,7 @@ class CarTest {
         assertThat(car.getBrand(), is("Škoda"));
         assertThat(car.getModel(), is("Octavia"));
         assertThat(car.getYear(), is(2023));
-        assertThat(car.getTankSize(), is(tankSize));
+        assertThat(car.getTankCapacity(), is(tankSize));
         assertThat(car.getConsumptionSize(), is(consumptionSize));
 
         CarEngine carEngine = car.getCarEngine();
