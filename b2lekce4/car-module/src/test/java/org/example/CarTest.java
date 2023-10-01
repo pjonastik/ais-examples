@@ -3,8 +3,6 @@ package org.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.example.CarEngineMatcher.carEngineMatcher;
 import static org.hamcrest.Matchers.*;
@@ -49,7 +47,7 @@ class CarTest {
     void driveShouldDecreaseFuelAccordingToConsumption() {
         CarEngine dieselEngine = new CarEngine(EngineType.DIESEL,2.9F,  6);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 5.0f);
-        car.tank(EngineType.DIESEL, 40);
+        car.refuel(EngineType.DIESEL, 40);
 
         car.drive(100f);
         assertThat(car.getActualTankCapacity(), is(35f));
@@ -65,22 +63,22 @@ class CarTest {
     }
 
     @Test
-    void fillCarTank() {
+    void refuelCarTank() {
         CarEngine dieselEngine = new CarEngine(EngineType.DIESEL, 2.9F, 6);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.5f);
 
-        car.tank(EngineType.DIESEL, 20f);
+        car.refuel(EngineType.DIESEL, 20f);
 
         assertThat(car.getActualTankCapacity(), is(20f));
     }
 
     @Test
-    void fillCarTankShouldNoTankMoreThanTotalTankSize() {
+    void refuelShouldBeCapped() {
         CarEngine dieselEngine = new CarEngine(EngineType.DIESEL, 2.9F, 6);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.5f);
 
         TankOverflowException thrown = Assertions.assertThrows(TankOverflowException.class, () -> {
-            car.tank(EngineType.DIESEL, 41f);
+            car.refuel(EngineType.DIESEL, 41f);
         });
 
         assertThat(thrown.getMessage(), containsString("Tank capacity overflow"));
@@ -89,7 +87,6 @@ class CarTest {
         assertThat(thrown.getMessage(), containsString("40"));
     }
 
-    // TODO drive method should should decrese actualTankCapaacity acording to consumptionSize
     // TODO drive should throw exception if drive method is invoked but we don't have enough gas in tank
 
     //TODO implement method percentageOfTank (e.g. if my getActualTankCapacity is 20 and tankSize is 40 then is should

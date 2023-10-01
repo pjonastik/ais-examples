@@ -109,7 +109,7 @@ public class Car {
         return actualTankCapacity;
     }
 
-    public void tank(EngineType engineType, float liters) {
+    public void refuel(EngineType engineType, float liters) {
         if ((actualTankCapacity + liters) > tankSize) {
             throw new TankOverflowException(
                     String.format("Tank capacity overflow ('%s' liters)! The tank capacity is '%d' liters.",
