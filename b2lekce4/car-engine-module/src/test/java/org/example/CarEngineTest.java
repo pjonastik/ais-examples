@@ -13,14 +13,14 @@ public class CarEngineTest {
     public void createDieselCarEngine() {
         CarEngine carEngine = CarEngine.newDieselCar(3f, 6);
 
-        assertThat(carEngine, is(carEngineMatcher(EngineType.DIESEL, 3F, 6)));
+        assertThat(carEngine, is(carEngineMatcher(FuelType.DIESEL, 3F, 6)));
     }
 
     @Test
     public void createGasolineCarEngine() {
         CarEngine carEngine = CarEngine.newGasolineCar(2f, 4);
 
-        assertThat(carEngine.getType(), equalTo(EngineType.GASOLINE));
+        assertThat(carEngine.getType(), equalTo(FuelType.GASOLINE));
         assertThat(carEngine.getVolume(), equalTo(2F));
         assertThat(carEngine.getCylinderCount(), equalTo(4));
     }

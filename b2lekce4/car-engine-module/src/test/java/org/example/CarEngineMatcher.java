@@ -5,17 +5,17 @@ import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
 public final class CarEngineMatcher extends TypeSafeMatcher<CarEngine> {
-    private final EngineType type;
+    private final FuelType type;
     private final double volume;
     private final int cylinderCount;
 
-    public CarEngineMatcher(EngineType type, double volume, int cylinderCount) {
+    public CarEngineMatcher(FuelType type, double volume, int cylinderCount) {
         this.type = type;
         this.volume = volume;
         this.cylinderCount = cylinderCount;
     }
 
-    public static Matcher<CarEngine> carEngineMatcher(EngineType type, double volume, int cylinderCount) {
+    public static Matcher<CarEngine> carEngineMatcher(FuelType type, double volume, int cylinderCount) {
         return new CarEngineMatcher(type, volume, cylinderCount);
     }
 

@@ -1,5 +1,5 @@
 package org.example;
 
-public enum EngineType {
+public enum FuelType {
     GASOLINE, DIESEL
 }

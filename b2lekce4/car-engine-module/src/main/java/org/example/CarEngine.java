@@ -3,26 +3,26 @@ package org.example;
 import java.util.Objects;
 
 public class CarEngine {
-    private final EngineType type;
+    private final FuelType type;
     private final float volume;
     private final int cylinderCount;
 
 
-    public CarEngine(EngineType type, float volume, int cylinderCount) {
+    public CarEngine(FuelType type, float volume, int cylinderCount) {
         this.type = type;
         this.volume = volume;
         this.cylinderCount = cylinderCount;
     }
 
     public static CarEngine newDieselCar(float volume, int cylinderCount) {
-        return new CarEngine(EngineType.DIESEL, volume, cylinderCount);
+        return new CarEngine(FuelType.DIESEL, volume, cylinderCount);
     }
 
     public static CarEngine newGasolineCar(float volume, int cylinderCount) {
-        return new CarEngine(EngineType.GASOLINE, volume, cylinderCount);
+        return new CarEngine(FuelType.GASOLINE, volume, cylinderCount);
     }
 
-    public EngineType getType() {
+    public FuelType getType() {
         return type;
     }
 

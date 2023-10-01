@@ -16,11 +16,11 @@ class CarTest {
         float volume = 2.9F;
         int tankSize = 40;
 
-        CarEngine dieselEngine = new CarEngine(EngineType.DIESEL, volume, cylinderCount);
+        CarEngine dieselEngine = new CarEngine(FuelType.DIESEL, volume, cylinderCount);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, tankSize, consumptionSize);
         car.setColor("black");
 
-        assertThat(dieselEngine, is(carEngineMatcher(EngineType.DIESEL, volume, cylinderCount)));
+        assertThat(dieselEngine, is(carEngineMatcher(FuelType.DIESEL, volume, cylinderCount)));
         assertThat(car.getBrand(), is("Škoda"));
         assertThat(car.getModel(), is("Octavia"));
         assertThat(car.getYear(), is(2023));
@@ -28,14 +28,14 @@ class CarTest {
         assertThat(car.getConsumptionSize(), is(consumptionSize));
 
         CarEngine carEngine = car.getCarEngine();
-        assertThat(carEngine.getType(), is(EngineType.DIESEL));
+        assertThat(carEngine.getType(), is(FuelType.DIESEL));
         assertThat(carEngine.getVolume(), is(volume));
         assertThat(carEngine.getCylinderCount(), is(cylinderCount));
     }
 
     @Test
     void driveShouldAddDrivenKilometersToMileage() {
-        CarEngine dieselEngine = new CarEngine(EngineType.DIESEL,2.9F,  6);
+        CarEngine dieselEngine = new CarEngine(FuelType.DIESEL,2.9F,  6);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 0, 0.0f);
         car.drive(2.2F);
         car.drive(2.8F);
@@ -45,9 +45,9 @@ class CarTest {
 
     @Test
     void driveShouldDecreaseFuelAccordingToConsumption() {
-        CarEngine dieselEngine = new CarEngine(EngineType.DIESEL,2.9F,  6);
+        CarEngine dieselEngine = new CarEngine(FuelType.DIESEL,2.9F,  6);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 5.0f);
-        car.refuel(EngineType.DIESEL, 40);
+        car.refuel(FuelType.DIESEL, 40);
 
         car.drive(100f);
         assertThat(car.getActualTankCapacity(), is(35f));
@@ -64,21 +64,21 @@ class CarTest {
 
     @Test
     void refuelCarTank() {
-        CarEngine dieselEngine = new CarEngine(EngineType.DIESEL, 2.9F, 6);
+        CarEngine dieselEngine = new CarEngine(FuelType.DIESEL, 2.9F, 6);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.5f);
 
-        car.refuel(EngineType.DIESEL, 20f);
+        car.refuel(FuelType.DIESEL, 20f);
 
         assertThat(car.getActualTankCapacity(), is(20f));
     }
 
     @Test
     void refuelShouldBeCapped() {
-        CarEngine dieselEngine = new CarEngine(EngineType.DIESEL, 2.9F, 6);
+        CarEngine dieselEngine = new CarEngine(FuelType.DIESEL, 2.9F, 6);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.5f);
 
         TankOverflowException thrown = Assertions.assertThrows(TankOverflowException.class, () -> {
-            car.refuel(EngineType.DIESEL, 41f);
+            car.refuel(FuelType.DIESEL, 41f);
         });
 
         assertThat(thrown.getMessage(), containsString("Tank capacity overflow"));
