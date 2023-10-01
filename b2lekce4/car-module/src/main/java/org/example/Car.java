@@ -9,8 +9,8 @@ public class Car {
     private final int year;
     private final CarEngine carEngine;
     private final int tankSize;
-    private final float consumptionSize;
-    private double mileage;
+    private final float consumptionSize;    //per 100 km
+    private float mileage;
     private String color;
     private float actualTankCapacity;
 
@@ -49,22 +49,22 @@ public class Car {
 
     public void drive(byte kilometers) {
         mileage += kilometers;
+        actualTankCapacity = actualTankCapacity - (kilometers * consumptionSize/100);
     }
 
     public void drive(short kilometers) {
         mileage += kilometers;
+        actualTankCapacity = actualTankCapacity - (kilometers * consumptionSize/100);
     }
 
     public void drive(int kilometers) {
         mileage += kilometers;
+        actualTankCapacity = actualTankCapacity - (kilometers * consumptionSize/100);
     }
 
     public void drive(float kilometers) {
         mileage += kilometers;
-    }
-
-    public void drive(double kilometers) {
-        mileage += kilometers;
+        actualTankCapacity = actualTankCapacity - (kilometers * consumptionSize/100);
     }
 
     public double getMileage() {
