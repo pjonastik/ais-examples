@@ -46,6 +46,25 @@ class CarTest {
     }
 
     @Test
+    void driveShouldDecreaseFuelAccordingToConsumption() {
+        CarEngine dieselEngine = new CarEngine(EngineType.DIESEL,2.9F,  6);
+        Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 5.0f);
+        car.tank(EngineType.DIESEL, 40);
+
+        car.drive(100f);
+        assertThat(car.getActualTankCapacity(), is(35f));
+
+        car.drive(100);
+        assertThat(car.getActualTankCapacity(), is(30f));
+
+        car.drive((short)100);
+        assertThat(car.getActualTankCapacity(), is(25f));
+
+        car.drive((byte)100);
+        assertThat(car.getActualTankCapacity(), is(20f));
+    }
+
+    @Test
     void fillCarTank() {
         CarEngine dieselEngine = new CarEngine(EngineType.DIESEL, 2.9F, 6);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.5f);
