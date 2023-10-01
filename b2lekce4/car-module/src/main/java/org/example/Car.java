@@ -48,16 +48,18 @@ public class Car {
     }
 
     public void drive(byte kilometers) {
-        mileage += kilometers;
-        actualTankCapacity = actualTankCapacity - (kilometers * consumptionSize/100);
+        drive((float) kilometers);
     }
 
     public void drive(short kilometers) {
-        mileage += kilometers;
-        actualTankCapacity = actualTankCapacity - (kilometers * consumptionSize/100);
+        drive((float) kilometers);
     }
 
     public void drive(int kilometers) {
+        drive((float) kilometers);
+    }
+
+    public void drive(float kilometers) {
         float availableKilometers = (actualTankCapacity/consumptionSize)*100;
         if (availableKilometers < kilometers) {
             throw new NotEnoughFuelException(
@@ -65,12 +67,6 @@ public class Car {
                             actualTankCapacity, tankSize, kilometers,
                             (kilometers-availableKilometers) * consumptionSize / 100));
         }
-
-        mileage += kilometers;
-        actualTankCapacity = actualTankCapacity - (kilometers * consumptionSize/100);
-    }
-
-    public void drive(float kilometers) {
         mileage += kilometers;
         actualTankCapacity = actualTankCapacity - (kilometers * consumptionSize/100);
     }
