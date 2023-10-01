@@ -87,7 +87,25 @@ class CarTest {
         assertThat(thrown.getMessage(), containsString("40"));
     }
 
-    // TODO drive should throw exception if drive method is invoked but we don't have enough gas in tank
+    @Test
+    void driveIsAvailableOnlyWhenCarHasEnoughFuel() {
+        CarEngine dieselEngine = new CarEngine(FuelType.DIESEL, 2.9F, 6);
+        Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.0f);
+        car.refuel(FuelType.DIESEL, 5);
+
+        NotEnoughFuelException thrown = Assertions.assertThrows(NotEnoughFuelException.class, () -> {
+            car.drive(100);
+        });
+
+        assertThat(thrown.getMessage(), containsString("Not enough fuel"));
+        assertThat(thrown.getMessage(), containsString("[5.0/40]"));
+        assertThat(thrown.getMessage(), containsString("liters"));
+        assertThat(thrown.getMessage(), containsString("in tank to drive"));
+        assertThat(thrown.getMessage(), containsString("100"));
+        assertThat(thrown.getMessage(), containsString("kilometers"));
+        assertThat(thrown.getMessage(), containsString("Missing"));
+        assertThat(thrown.getMessage(), containsString("1.00"));
+    }
 
     //TODO implement method percentageOfTank (e.g. if my getActualTankCapacity is 20 and tankSize is 40 then is should
     //     return 50%
