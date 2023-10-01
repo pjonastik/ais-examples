@@ -1,10 +1,13 @@
 package org.example;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 import static org.example.CarEngineMatcher.carEngineMatcher;
+import static org.hamcrest.Matchers.*;
 
 class CarTest {
 
@@ -33,7 +36,7 @@ class CarTest {
     }
 
     @Test
-    void mileageCalculation() {
+    void driveShouldAddDrivenKilometersToMileage() {
         CarEngine dieselEngine = new CarEngine(EngineType.DIESEL,2.9F,  6);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 0, 0.0f);
         car.drive(2.2F);
@@ -52,7 +55,21 @@ class CarTest {
         assertThat(car.getActualTankCapacity(), is(20f));
     }
 
-    // TODO I cannot fill more than totalCapacity
+    @Test
+    void fillCarTankShouldNoTankMoreThanTotalTankSize() {
+        CarEngine dieselEngine = new CarEngine(EngineType.DIESEL, 2.9F, 6);
+        Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.5f);
+
+        TankOverflowException thrown = Assertions.assertThrows(TankOverflowException.class, () -> {
+            car.tank(EngineType.DIESEL, 41f);
+        });
+
+        assertThat(thrown.getMessage(), containsString("Tank capacity overflow"));
+        assertThat(thrown.getMessage(), containsString("The tank capacity is"));
+        assertThat(thrown.getMessage(), containsString("1.0"));
+        assertThat(thrown.getMessage(), containsString("40"));
+    }
+
     // TODO drive method should should decrese actualTankCapaacity acording to consumptionSize
     // TODO drive should throw exception if drive method is invoked but we don't have enough gas in tank
 
