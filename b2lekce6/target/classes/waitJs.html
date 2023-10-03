@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <script>
+        function wait() {
+          console.log('before');
+          setTimeout(notifyAfterWait, 40000); // run notifyAfterWait after 40 secs
+          console.log('after');
+        }
+        function notifyAfterWait() {
+          document.getElementById("p-id").innerHTML = "Paragraph changed after.";
+        }
+    </script>
+</head>
+<body>
+
+
+    <h1>Testing page</h1>
+    <p id="p-id">This is my waiting test page!</p>
+
+    <script>
+        wait();
+    </script>
+</body>
