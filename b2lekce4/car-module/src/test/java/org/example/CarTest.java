@@ -63,31 +63,6 @@ class CarTest {
     }
 
     @Test
-    void refuelCarTank() {
-        CarEngine dieselEngine = new CarEngine(FuelType.DIESEL, 2.9F, 6);
-        Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.5f);
-
-        car.refuel(FuelType.DIESEL, 20f);
-
-        assertThat(car.getActualTankCapacity(), is(20f));
-    }
-
-    @Test
-    void refuelShouldBeCapped() {
-        CarEngine dieselEngine = new CarEngine(FuelType.DIESEL, 2.9F, 6);
-        Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.5f);
-
-        TankOverflowException thrown = Assertions.assertThrows(TankOverflowException.class, () -> {
-            car.refuel(FuelType.DIESEL, 41f);
-        });
-
-        assertThat(thrown.getMessage(), containsString("Tank capacity overflow"));
-        assertThat(thrown.getMessage(), containsString("The tank capacity is"));
-        assertThat(thrown.getMessage(), containsString("1.0"));
-        assertThat(thrown.getMessage(), containsString("40"));
-    }
-
-    @Test
     void driveIsAvailableOnlyWhenCarHasEnoughFuel() {
         CarEngine dieselEngine = new CarEngine(FuelType.DIESEL, 2.9F, 6);
         Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.0f);
@@ -105,6 +80,32 @@ class CarTest {
         assertThat(thrown.getMessage(), containsString("kilometers"));
         assertThat(thrown.getMessage(), containsString("Missing"));
         assertThat(thrown.getMessage(), containsString("1.00"));
+    }
+
+    @Test
+    void refuelCarTank() {
+        CarEngine dieselEngine = new CarEngine(FuelType.DIESEL, 2.9F, 6);
+        Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.5f);
+
+        car.refuel(FuelType.DIESEL, 20f);
+        car.refuel(FuelType.DIESEL, 20f);
+
+        assertThat(car.getActualTankCapacity(), is(40f));
+    }
+
+    @Test
+    void refuelShouldBeCapped() {
+        CarEngine dieselEngine = new CarEngine(FuelType.DIESEL, 2.9F, 6);
+        Car car = new Car("Octavia", "Škoda", 2023, dieselEngine, 40, 6.5f);
+
+        TankOverflowException thrown = Assertions.assertThrows(TankOverflowException.class, () -> {
+            car.refuel(FuelType.DIESEL, 41f);
+        });
+
+        assertThat(thrown.getMessage(), containsString("Tank capacity overflow"));
+        assertThat(thrown.getMessage(), containsString("The tank capacity is"));
+        assertThat(thrown.getMessage(), containsString("1.0"));
+        assertThat(thrown.getMessage(), containsString("40"));
     }
 
     //TODO implement method percentageOfTank (e.g. if my getActualTankCapacity is 20 and tankSize is 40 then is should
